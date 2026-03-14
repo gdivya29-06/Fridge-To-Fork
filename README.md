@@ -103,4 +103,4 @@ App runs at `http://localhost:3000`
 
 ---
 
-*Built with ❤️ by Gummala Divya — SRM Institute of Science and Technology*
+
