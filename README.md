@@ -20,11 +20,17 @@ Built as a B.Tech CSE (AIML) project at **SRM Institute of Science and Technolog
 ### Generated Recipes
 ![Recipes](screenshots/recipe1.jpg)
 
+### More Recipes
+![Recipes2](screenshots/recipe2.jpg)
+
 ### Recipe Instructions
 ![Instructions](screenshots/instructions.jpg)
 
+### Cooking Assistant
+![Chat](screenshots/cooking assistant.jpg)
+
 ### My Cookbook
-![Cookbook](screenshots/cookbook.jpg)
+![Cookbook](screenshots/cookbook.jpeg)
 
 ---
 
