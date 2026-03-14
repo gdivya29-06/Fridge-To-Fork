@@ -6,17 +6,40 @@ Built as a B.Tech CSE (AIML) project at **SRM Institute of Science and Technolog
 
 ---
 
+## 📸 Screenshots
+
+### Login Page
+![Login](screenshots/login.jpg)
+
+### Home Page
+![Home](screenshots/home.jpg)
+
+### Preferences & Ingredients
+![Preferences](screenshots/preferences.jpg)
+
+### Generated Recipes
+![Recipes](screenshots/recipe1.jpg)
+
+### Recipe Instructions
+![Instructions](screenshots/instructions.jpg)
+
+### My Cookbook
+![Cookbook](screenshots/cookbook.jpg)
+
+---
+
 ## ✨ Features
 
-- 🤖 **AI Recipe Generation** — Generate 6 famous recipes from your ingredients
-- 📸 **Photo Detection** — Upload a photo and AI detects ingredients automatically
-- 🌍 **Multi-language Support** — Get recipes in English, Hindi, Tamil, Telugu, Spanish, French
-- ⚠️ **Allergy Filter** — Never include allergens you're sensitive to
-- 🥗 **Dietary Preferences** — Vegetarian, Vegan, Keto, Halal, Gluten-Free and more
-- 🤖 **Cooking Assistant Chatbot** — Ask questions about any recipe while cooking
-- ⭐ **Favourites** — Save your favourite recipes locally
-- 📖 **My Cookbook** — All your generated recipes saved to your account
-- 🔐 **Firebase Authentication** — Secure login and signup
+- 🤖 AI generates 6 personalized recipes from your ingredients
+- 📸 Upload a photo — AI detects ingredients automatically
+- 🌍 Recipes in 6 languages (English, Hindi, Tamil, Telugu, Spanish, French)
+- ⚠️ Allergy filter — never includes allergens you select
+- 🥗 Dietary preferences (Vegetarian, Vegan, Keto, Halal, Gluten-Free and more)
+- 💬 Recipe-specific AI cooking assistant chatbot
+- ⭐ Rate recipes 1 to 5 stars
+- ❤️ Save favourite recipes
+- 📖 Personal cookbook — all past recipes saved to your account
+- 🔐 Secure login and signup with Firebase
 
 ---
 
@@ -33,23 +56,7 @@ Built as a B.Tech CSE (AIML) project at **SRM Institute of Science and Technolog
 
 ---
 
-## 👥 Team
-
-| Name | Role |
-|------|------|
-| Gummala Divya | Full Stack AI Developer |
-| Cyna Benny | UX Tester & Quality Analyst |
-| Sujai Jaideep | AI Research Analyst |
-
----
-
 ## 🚀 How to Run Locally
-
-### Prerequisites
-- Node.js installed
-- OpenRouter API key (free at openrouter.ai)
-- Unsplash API key (free at unsplash.com/developers)
-- Firebase project
 
 ### Backend Setup
 ```bash
@@ -80,27 +87,14 @@ App runs at `http://localhost:3000`
 
 ---
 
-## 📸 Screenshots
-
-### Home Page
-![Home](screenshots/home.png)
-
-### Recipe Generator
-![Recipes](screenshots/recipes.png)
-
-### My Cookbook
-![Cookbook](screenshots/cookbook.png)
-
----
-
 ## 🎯 Future Enhancements
 
 - 📱 Mobile App (React Native)
-- 🛒 Grocery Integration
-- 📊 Nutrition Tracking
-- 🎥 Video Instructions
-- 🤝 Social Recipe Sharing
+- 🛒 Grocery delivery integration (Swiggy/Blinkit)
+- 📊 Nutrition and calorie tracking
+- 🎥 YouTube video instructions
+- 🤝 Social recipe sharing
 
 ---
 
-*Built with ❤️ by Team Smart Recipe AI — SRM Institute of Science and Technology*
+*Built with ❤️ by Gummala Divya — SRM Institute of Science and Technology*
