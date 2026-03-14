@@ -1,4 +1,4 @@
-# 🍳 Smart Recipe AI
+# 🍳 Fridge-To-Fork
 
 An AI-powered recipe generator that turns your ingredients into delicious recipes instantly!
 
