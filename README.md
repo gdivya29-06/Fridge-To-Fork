@@ -1,106 +1,186 @@
-# 🍳 Fridge-To-Fork
+# 🥗 Fridge-to-Fork AI
 
-An AI-powered recipe generator that turns your ingredients into delicious recipes instantly!
+### Smart AI Platform That Turns Your Ingredients Into Personalized Recipes
 
-Built as a B.Tech CSE (AIML) project at **SRM Institute of Science and Technology**.
+Fridge-to-Fork AI is an intelligent cooking assistant that transforms available ingredients into practical, healthy, and delicious recipes using artificial intelligence.
 
----
-
-## 📸 Screenshots
-
-### Login Page
-![Login](screenshots/login.jpg)
-
-### Home Page
-![Home](screenshots/home.jpg)
-
-### Preferences & Ingredients
-![Preferences](screenshots/preferences.jpg)
-
-### Generated Recipes
-![Recipes](screenshots/recipe1.jpg)
-
-### More Recipes
-![Recipes2](screenshots/recipe2.jpg)
-
-### Recipe Instructions
-![Instructions](screenshots/instructions.jpg)
-
-### Cooking Assistant
-![Chat](screenshots/cooking assistant.jpg)
-
-### My Cookbook
-![Cookbook](screenshots/cookbook.jpeg)
+It is designed to reduce food waste, simplify meal planning, and support diverse dietary needs.
 
 ---
 
-## ✨ Features
+## 📸 Application Preview
 
-- 🤖 AI generates 6 personalized recipes from your ingredients
-- 📸 Upload a photo — AI detects ingredients automatically
-- 🌍 Recipes in 6 languages (English, Hindi, Tamil, Telugu, Spanish, French)
-- ⚠️ Allergy filter — never includes allergens you select
-- 🥗 Dietary preferences (Vegetarian, Vegan, Keto, Halal, Gluten-Free and more)
-- 💬 Recipe-specific AI cooking assistant chatbot
-- ⭐ Rate recipes 1 to 5 stars
-- ❤️ Save favourite recipes
-- 📖 Personal cookbook — all past recipes saved to your account
-- 🔐 Secure login and signup with Firebase
+### 🔍 Create Recipe Interface
 
----
+![Create Recipe](screenshots/create.png)
 
-## 🛠️ Tech Stack
+### 🧠 Ingredient Freshness Selection
 
-| Technology | Purpose |
-|------------|---------|
-| React.js | Frontend UI |
-| Node.js + Express | Backend Server |
-| OpenRouter AI (Gemma) | AI Recipe Generation |
-| Firebase Auth | User Authentication |
-| Firestore | Recipe History Database |
-| Unsplash API | Recipe Images |
+![Freshness](screenshots/freshness.png)
+
+### 🍳 AI Generated Recipes
+
+![Recipes](screenshots/recipes.png)
+
+### 🛒 Smart Shopping List
+
+![Shopping](screenshots/shopping.png)
+
+### 🤖 Cooking Assistant Chat
+
+![Chat](screenshots/chat.png)
 
 ---
 
-## 🚀 How to Run Locally
+## 🚨 Problem Statement
 
-### Backend Setup
+Many households struggle with:
+
+* Food waste from unused ingredients
+* Not knowing what to cook
+* Dietary restrictions and allergies
+* Limited kitchen equipment
+* Lack of personalized recipes
+* Time-consuming meal planning
+
+---
+
+## 💡 Our Solution
+
+Fridge-to-Fork AI generates customized recipes based on:
+
+* Available ingredients
+* Health goals
+* Dietary preferences
+* Allergies
+* Kitchen equipment
+* Ingredient freshness
+* Preferred language
+
+---
+
+## 🔥 Key Features
+
+### 🥬 Ingredient Input (Multiple Methods)
+
+* Manual search with autocomplete
+* AI detection from uploaded ingredient photos
+
+### 🧠 Freshness-Aware Cooking
+
+Users indicate how fresh ingredients are → AI prioritizes items that may spoil soon.
+
+### ⚠️ Allergy Filter
+
+Excludes selected allergens completely.
+
+### 🥦 Dietary Preferences
+
+Supports vegetarian, vegan, keto, gluten-free, dairy-free, halal, kosher, and more.
+
+### 🎯 Nutrition & Health Goals
+
+Recipes tailored for weight loss/gain, high protein, diabetic friendly, heart healthy, low carb, and balanced diet.
+
+### 🍳 Equipment-Aware Recipes
+
+AI suggests only recipes that can be cooked using available tools.
+
+### 🌍 Multi-Language Support
+
+Recipes available in multiple languages.
+
+### 🤖 AI Recipe Generation
+
+Includes ingredients, instructions, calories, servings, tips, and dietary tags.
+
+### 🖼️ Visual & Video Guidance
+
+Food images and cooking tutorial videos included.
+
+### 💬 Interactive Cooking Assistant
+
+Real-time AI chatbot for cooking help.
+
+### ⭐ Favorites System
+
+Save preferred recipes.
+
+### 🛒 Smart Shopping List Generator
+
+Automatically combines ingredients from selected recipes into categorized lists.
+
+### 📤 Easy Sharing
+
+Share recipes or shopping lists instantly.
+
+### ☁️ Cloud Storage
+
+User recipes stored using Firebase.
+
+---
+
+## 🧱 Tech Stack
+
+**Frontend:** React.js
+**Backend:** Node.js, Express.js
+
+**AI & APIs:**
+
+* OpenAI API
+* Computer vision for ingredient detection
+* Unsplash API
+* YouTube API
+
+**Database & Authentication:**
+
+* Firebase Firestore
+* Firebase Authentication
+
+---
+
+## 🌱 Impact
+
+Fridge-to-Fork AI helps:
+
+* Reduce household food waste
+* Promote healthier eating
+* Save time and money
+* Improve cooking accessibility
+* Support sustainable living
+
+---
+
+## 🚀 Future Enhancements
+
+* Smart meal planning
+* Expiry prediction alerts
+* Nutrition tracking dashboard
+* Voice assistant integration
+* Mobile app version
+* Smart fridge integration
+
+---
+
+## 🧪 Installation & Setup
+
 ```bash
-cd server
-npm install
-```
-
-Create a `.env` file in the server folder:
-```
-OPENROUTER_API_KEY=your_openrouter_key
-UNSPLASH_ACCESS_KEY=your_unsplash_key
-PORT=5001
-```
-
-Start the server:
-```bash
-node index.js
-```
-
-### Frontend Setup
-```bash
-cd client
+git clone https://github.com/gdivya29-06/Fridge-To-Fork.git
+cd Fridge-To-Fork
 npm install
 npm start
 ```
 
-App runs at `http://localhost:3000`
+Backend:
+
+```bash
+cd backend
+npm install
+npm run dev
+```
 
 ---
 
-## 🎯 Future Enhancements
+## ⭐ Acknowledgment
 
-- 📱 Mobile App (React Native)
-- 🛒 Grocery delivery integration (Swiggy/Blinkit)
-- 📊 Nutrition and calorie tracking
-- 🎥 YouTube video instructions
-- 🤝 Social recipe sharing
-
----
-
-
+Developed as an academic project exploring AI-driven solutions for smart cooking and food sustainability.
