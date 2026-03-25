@@ -13,6 +13,7 @@ function Navbar({ user }) {
   const navLinks = [
     { path: '/', label: 'Home' },
     { path: '/create', label: 'Create Recipe' },
+    { path: '/desserts', label: '🍰 Desserts' },
     { path: '/cookbook', label: '📖 Cookbook' },
     { path: '/about', label: 'About' }
   ];

@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { db } from '../firebase';
 import { doc, setDoc } from 'firebase/firestore';
 
-function RecipeCard({ recipe, onFavourite, isFavourite, onSelectForChat, isSelected, user }) {
+function RecipeCard({ recipe, onFavourite, isFavourite, onSelectForChat, isSelected, onShare, isSelectedForShopping, onToggleShopping, user }) {
   const [expanded, setExpanded] = useState(false);
   const [rating, setRating] = useState(recipe.userRating || 0);
   const [hoveredStar, setHoveredStar] = useState(0);
+  const [showVideo, setShowVideo] = useState(false);
 
   const handleRating = async (star) => {
     setRating(star);
@@ -54,29 +55,23 @@ function RecipeCard({ recipe, onFavourite, isFavourite, onSelectForChat, isSelec
           src={recipe.imageUrl}
           alt={recipe.name}
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          onError={e => {
-            e.target.src = 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800';
-          }}
+          onError={e => { e.target.src = 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800'; }}
         />
-        {/* Favourite Button */}
-        <button
-          onClick={() => onFavourite && onFavourite(recipe)}
-          style={{
-            position: 'absolute', top: '10px', right: '10px',
-            backgroundColor: 'white', border: '2px solid #4a7c2f',
-            borderRadius: '50%', width: '40px', height: '40px',
-            fontSize: '1.2rem', cursor: 'pointer',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            transition: 'transform 0.2s'
-          }}
+        <button onClick={() => onFavourite && onFavourite(recipe)} style={{
+          position: 'absolute', top: '10px', right: '10px',
+          backgroundColor: 'white', border: '2px solid #4a7c2f',
+          borderRadius: '50%', width: '40px', height: '40px',
+          fontSize: '1.2rem', cursor: 'pointer',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          transition: 'transform 0.2s'
+        }}
           onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.1)'}
           onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
         >
           {isFavourite ? '⭐' : '☆'}
         </button>
 
-        {/* Selected Badge */}
         {isSelected && (
           <div style={{
             position: 'absolute', top: '10px', left: '10px',
@@ -88,10 +83,7 @@ function RecipeCard({ recipe, onFavourite, isFavourite, onSelectForChat, isSelec
           </div>
         )}
 
-        <div style={{
-          position: 'absolute', bottom: 0, left: 0, right: 0, height: '60px',
-          background: 'linear-gradient(transparent, rgba(26,46,16,0.6))'
-        }} />
+        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '60px', background: 'linear-gradient(transparent, rgba(26,46,16,0.6))' }} />
       </div>
 
       {/* Content */}
@@ -100,25 +92,19 @@ function RecipeCard({ recipe, onFavourite, isFavourite, onSelectForChat, isSelec
           {recipe.name}
         </h3>
 
-        {/* ⭐ Star Rating */}
+        {/* Star Rating */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', marginBottom: '0.8rem' }}>
           {[1, 2, 3, 4, 5].map((star) => (
-            <span
-              key={star}
-              onClick={() => handleRating(star)}
+            <span key={star} onClick={() => handleRating(star)}
               onMouseEnter={() => setHoveredStar(star)}
               onMouseLeave={() => setHoveredStar(0)}
               style={{
-                fontSize: '1.3rem',
-                cursor: 'pointer',
+                fontSize: '1.3rem', cursor: 'pointer',
                 color: star <= (hoveredStar || rating) ? '#f59e0b' : '#d1d5db',
                 transition: 'color 0.1s, transform 0.1s',
                 transform: star <= (hoveredStar || rating) ? 'scale(1.2)' : 'scale(1)',
                 display: 'inline-block'
-              }}
-            >
-              ★
-            </span>
+              }}>★</span>
           ))}
           <span style={{ fontSize: '0.8rem', color: '#5a6e4a', fontWeight: '600', marginLeft: '0.3rem' }}>
             {rating > 0 ? `${rating}/5` : 'Rate this recipe'}
@@ -148,42 +134,95 @@ function RecipeCard({ recipe, onFavourite, isFavourite, onSelectForChat, isSelec
               padding: '0.2rem 0.6rem', borderRadius: '20px',
               fontSize: '0.8rem', fontWeight: '600',
               border: index % 2 === 0 ? '1px solid #c8d8b0' : '1px solid #fde68a'
-            }}>
-              {tag}
-            </span>
+            }}>{tag}</span>
           ))}
         </div>
 
-        {/* Chat button */}
-        <button
-          onClick={() => onSelectForChat && onSelectForChat(recipe)}
-          style={{
-            width: '100%', padding: '0.6rem',
-            background: isSelected
-              ? 'linear-gradient(135deg, #1a2e10, #2d4a1e)'
-              : 'linear-gradient(135deg, #e8f0e0, #d4e8b0)',
+        {/* Shopping List Checkbox */}
+        {onToggleShopping && (
+          <div onClick={() => onToggleShopping(recipe)} style={{
+            display: 'flex', alignItems: 'center', gap: '0.8rem',
+            padding: '0.6rem 1rem', borderRadius: '10px', cursor: 'pointer',
+            backgroundColor: isSelectedForShopping ? '#f0fdf4' : '#f7f9f4',
+            border: isSelectedForShopping ? '2px solid #4a7c2f' : '2px solid #e2e8f0',
+            marginBottom: '0.5rem', transition: 'all 0.2s'
+          }}>
+            <div style={{
+              width: '22px', height: '22px', borderRadius: '6px', flexShrink: 0,
+              border: isSelectedForShopping ? '2px solid #4a7c2f' : '2px solid #c8d8b0',
+              backgroundColor: isSelectedForShopping ? '#4a7c2f' : 'white',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              transition: 'all 0.2s'
+            }}>
+              {isSelectedForShopping && <span style={{ color: 'white', fontSize: '0.8rem', fontWeight: '800' }}>✓</span>}
+            </div>
+            <span style={{ fontSize: '0.85rem', fontWeight: '700', color: isSelectedForShopping ? '#2d4a1e' : '#5a6e4a' }}>
+              {isSelectedForShopping ? '✅ Added to shopping list' : '🛒 Add to shopping list'}
+            </span>
+          </div>
+        )}
+
+        {/* Action Buttons Row: Chat + Share */}
+        <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.5rem' }}>
+          <button onClick={() => onSelectForChat && onSelectForChat(recipe)} style={{
+            flex: 1, padding: '0.6rem',
+            background: isSelected ? 'linear-gradient(135deg, #1a2e10, #2d4a1e)' : 'linear-gradient(135deg, #e8f0e0, #d4e8b0)',
             color: isSelected ? 'white' : '#2d4a1e',
             border: '2px solid #4a7c2f', borderRadius: '10px',
+            cursor: 'pointer', fontWeight: '700', fontSize: '0.85rem', transition: 'all 0.2s'
+          }}>
+            {isSelected ? '🤖 Chatting' : '💬 Ask AI'}
+          </button>
+
+          <button onClick={() => onShare && onShare(recipe)} style={{
+            flex: 1, padding: '0.6rem',
+            background: 'linear-gradient(135deg, #e0f0ff, #bfdbfe)',
+            color: '#1e40af',
+            border: '2px solid #93c5fd', borderRadius: '10px',
+            cursor: 'pointer', fontWeight: '700', fontSize: '0.85rem', transition: 'all 0.2s'
+          }}>
+            🔗 Share Recipe
+          </button>
+        </div>
+
+        {/* YouTube Button */}
+        {recipe.youtubeUrl && (
+          <button onClick={() => setShowVideo(!showVideo)} style={{
+            width: '100%', padding: '0.6rem',
+            background: showVideo ? 'linear-gradient(135deg, #dc2626, #b91c1c)' : 'linear-gradient(135deg, #ff4444, #cc0000)',
+            color: 'white', border: 'none', borderRadius: '10px',
             cursor: 'pointer', fontWeight: '700', fontSize: '0.85rem',
-            marginBottom: '0.5rem', transition: 'all 0.2s'
-          }}
-        >
-          {isSelected ? '🤖 Currently chatting about this' : '💬 Ask AI about this recipe'}
-        </button>
+            marginBottom: '0.5rem', transition: 'all 0.2s',
+            boxShadow: '0 3px 10px rgba(220,38,38,0.3)'
+          }}>
+            {showVideo ? '✕ Hide Video' : '▶ Watch on YouTube'}
+          </button>
+        )}
+
+        {/* YouTube Embed */}
+        {showVideo && recipe.youtubeUrl && (
+          <div style={{ marginBottom: '0.8rem', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.15)' }}>
+            <iframe
+              width="100%"
+              height="200"
+              src={recipe.youtubeUrl}
+              title={`${recipe.name} recipe video`}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              style={{ display: 'block' }}
+            />
+          </div>
+        )}
 
         {/* Expand Button */}
-        <button
-          onClick={() => setExpanded(!expanded)}
-          style={{
-            width: '100%', padding: '0.7rem',
-            background: expanded
-              ? 'linear-gradient(135deg, #1a2e10, #2d4a1e)'
-              : 'linear-gradient(135deg, #2d4a1e, #4a7c2f)',
-            color: 'white', border: 'none', borderRadius: '10px',
-            cursor: 'pointer', fontWeight: '700', fontSize: '0.9rem',
-            transition: 'all 0.2s', boxShadow: '0 3px 10px rgba(74,124,47,0.3)'
-          }}
-        >
+        <button onClick={() => setExpanded(!expanded)} style={{
+          width: '100%', padding: '0.7rem',
+          background: expanded ? 'linear-gradient(135deg, #1a2e10, #2d4a1e)' : 'linear-gradient(135deg, #2d4a1e, #4a7c2f)',
+          color: 'white', border: 'none', borderRadius: '10px',
+          cursor: 'pointer', fontWeight: '700', fontSize: '0.9rem',
+          transition: 'all 0.2s', boxShadow: '0 3px 10px rgba(74,124,47,0.3)'
+        }}>
           {expanded ? '▲ Hide Recipe' : '▼ View Full Recipe'}
         </button>
 
@@ -193,26 +232,20 @@ function RecipeCard({ recipe, onFavourite, isFavourite, onSelectForChat, isSelec
             <h4 style={{ fontWeight: '700', marginBottom: '0.5rem', color: '#1a2e10' }}>📝 Ingredients</h4>
             <ul style={{ paddingLeft: '1.2rem', marginBottom: '1rem' }}>
               {recipe.ingredients && recipe.ingredients.map((ing, index) => (
-                <li key={index} style={{ fontSize: '0.9rem', color: '#334155', marginBottom: '0.3rem', lineHeight: '1.5' }}>
-                  {ing}
-                </li>
+                <li key={index} style={{ fontSize: '0.9rem', color: '#334155', marginBottom: '0.3rem', lineHeight: '1.5' }}>{ing}</li>
               ))}
             </ul>
 
             <h4 style={{ fontWeight: '700', marginBottom: '0.5rem', color: '#1a2e10' }}>👨‍🍳 Instructions</h4>
             <ol style={{ paddingLeft: '1.2rem', marginBottom: '1rem' }}>
               {recipe.instructions && recipe.instructions.map((step, index) => (
-                <li key={index} style={{ fontSize: '0.9rem', color: '#334155', marginBottom: '0.5rem', lineHeight: '1.6' }}>
-                  {step}
-                </li>
+                <li key={index} style={{ fontSize: '0.9rem', color: '#334155', marginBottom: '0.5rem', lineHeight: '1.6' }}>{step}</li>
               ))}
             </ol>
 
             {recipe.tips && (
               <div style={{ background: 'linear-gradient(135deg, #e8f0e0, #fef3c7)', padding: '0.8rem 1rem', borderRadius: '10px', borderLeft: '4px solid #4a7c2f' }}>
-                <p style={{ fontSize: '0.85rem', color: '#2d4a1e', fontWeight: '700' }}>
-                  💡 Tip: {recipe.tips}
-                </p>
+                <p style={{ fontSize: '0.85rem', color: '#2d4a1e', fontWeight: '700' }}>💡 Tip: {recipe.tips}</p>
               </div>
             )}
           </div>

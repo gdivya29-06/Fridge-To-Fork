@@ -8,6 +8,7 @@ import CreateRecipe from './pages/CreateRecipe';
 import About from './pages/About';
 import Auth from './pages/Auth';
 import Cookbook from './pages/Cookbook';
+import Desserts from './pages/Desserts';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -53,6 +54,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/create" element={<CreateRecipe user={user} />} />
         <Route path="/cookbook" element={<Cookbook user={user} />} />
+        <Route path="/desserts" element={<Desserts user={user} />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
