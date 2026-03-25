@@ -12,23 +12,23 @@ It is designed to reduce food waste, simplify meal planning, and support diverse
 
 ### 🔍 Create Recipe Interface
 
-![Create Recipe](screenshots/create.png)
+![Create Recipe](screenshots/Create Recipe.png)
 
 ### 🧠 Ingredient Freshness Selection
 
-![Freshness](screenshots/freshness.png)
+![Freshness](screenshots/Freshness.png)
 
 ### 🍳 AI Generated Recipes
 
-![Recipes](screenshots/recipes.png)
+![Recipes](screenshots/Recipes.png)
 
 ### 🛒 Smart Shopping List
 
-![Shopping](screenshots/shopping.png)
+![Shopping](screenshots/Shopping.png)
 
 ### 🤖 Cooking Assistant Chat
 
-![Chat](screenshots/chat.png)
+![Chat](screenshots/Chat.png)
 
 ---
 
