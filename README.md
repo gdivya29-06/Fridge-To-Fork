@@ -12,7 +12,7 @@ It is designed to reduce food waste, simplify meal planning, and support diverse
 
 ### 🔍 Create Recipe Interface
 
-![Create Recipe](screenshots/Create Recipe.png)
+![Create Recipe](screenshots/Create_Recipe.png)
 
 ### 🧠 Ingredient Freshness Selection
 
