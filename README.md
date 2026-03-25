@@ -59,28 +59,35 @@ Fridge-to-Fork AI generates customized recipes based on:
 
 ---
 
-## 🔥 Key Features
+## 🌟 Complete Feature Set
 
-### 🥬 Ingredient Input (Multiple Methods)
+Fridge-to-Fork AI is designed as a full intelligent cooking ecosystem.
 
-* Manual search with autocomplete
-* AI detection from uploaded ingredient photos
+### 🥬 Ingredient Acquisition
+
+* Manual ingredient search with autocomplete
+* Large ingredient database
+* AI detection from uploaded photos
 
 ### 🧠 Freshness-Aware Cooking
 
-Users indicate how fresh ingredients are → AI prioritizes items that may spoil soon.
+* Users mark how fresh ingredients are
+* AI prioritizes items that may spoil soon
+* Helps reduce food waste
 
-### ⚠️ Allergy Filter
+### ⚠️ Allergy & Dietary Management
 
-Excludes selected allergens completely.
+* Allergen exclusion system
+* Support for vegetarian, vegan, keto, gluten-free, dairy-free, halal, kosher, and more
 
-### 🥦 Dietary Preferences
+### 🎯 Health & Nutrition Personalization
 
-Supports vegetarian, vegan, keto, gluten-free, dairy-free, halal, kosher, and more.
-
-### 🎯 Nutrition & Health Goals
-
-Recipes tailored for weight loss/gain, high protein, diabetic friendly, heart healthy, low carb, and balanced diet.
+* Weight loss / gain
+* High protein
+* Diabetic-friendly
+* Heart healthy
+* Low carb
+* Balanced diet
 
 ### 🍳 Equipment-Aware Recipes
 
@@ -88,35 +95,40 @@ AI suggests only recipes that can be cooked using available tools.
 
 ### 🌍 Multi-Language Support
 
-Recipes available in multiple languages.
+Recipes generated in multiple languages.
 
 ### 🤖 AI Recipe Generation
 
-Includes ingredients, instructions, calories, servings, tips, and dietary tags.
+Includes ingredients, instructions, calories, servings, dietary tags, and tips.
 
 ### 🖼️ Visual & Video Guidance
 
-Food images and cooking tutorial videos included.
+Relevant food images and tutorial videos included.
 
 ### 💬 Interactive Cooking Assistant
 
-Real-time AI chatbot for cooking help.
+Real-time chatbot for cooking help.
 
-### ⭐ Favorites System
+### ⭐ Personalization
 
-Save preferred recipes.
+* Favourite recipes
+* Recipe history stored in cloud
 
 ### 🛒 Smart Shopping List Generator
 
-Automatically combines ingredients from selected recipes into categorized lists.
+Automatically consolidates ingredients into categorized lists with checklist support.
 
-### 📤 Easy Sharing
+### 📤 Sharing Features
 
-Share recipes or shopping lists instantly.
+Share recipes and shopping lists easily.
 
-### ☁️ Cloud Storage
+### 🍰 Dessert Generator
 
-User recipes stored using Firebase.
+Dedicated module for dessert recipes.
+
+### 📷 Computer Vision Module
+
+Detects ingredients from uploaded photos.
 
 ---
 
