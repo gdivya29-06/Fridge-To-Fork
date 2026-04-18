@@ -8,7 +8,7 @@ function RecipeCard({ recipe, onFavourite, isFavourite, onSelectForChat, isSelec
   const [hoveredStar, setHoveredStar] = useState(0);
   const [showVideo, setShowVideo] = useState(false);
 
-  // ✅ SAFE YOUTUBE EMBED FUNCTION 
+  
   const getEmbedUrl = (url) => { if (!url) return ""; const match = url.match(/[?&]v=([^&]+)/); if (match && match[1]) { return `https://www.youtube.com/embed/${match[1]}`; } return ""; };
 
   const handleRating = async (star) => {
