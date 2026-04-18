@@ -280,7 +280,7 @@ Return ONLY a valid JSON array with exactly this structure, no extra text, no ma
   recipes.map(async (recipe, index) => {
     const unsplashImage = await getFoodImageFromUnsplash(recipe.name);
     const imageUrl = unsplashImage || getFoodImage(recipe.name, index);
-    const youtubeUrl = await getYouTubeVideo(recipe.name);
+    const youtubeUrl = null;
     console.log(`${recipe.name} → Image: ${imageUrl ? 'Unsplash ✅' : 'Fallback'} | YouTube: ${youtubeUrl ? '✅' : 'null'}`);
     return { ...recipe, imageUrl, youtubeUrl };
   })
@@ -431,7 +431,7 @@ Return ONLY a valid JSON array with exactly this structure, no markdown:
       recipes.map(async (recipe, index) => {
         const unsplashImage = await getFoodImageFromUnsplash(recipe.name + ' dessert');
         const imageUrl = unsplashImage || getFoodImage(recipe.name, index);
-        const youtubeUrl = await getYouTubeVideo(recipe.name + ' recipe');
+        const youtubeUrl = null;
         return { ...recipe, imageUrl, youtubeUrl };
       })
     );
