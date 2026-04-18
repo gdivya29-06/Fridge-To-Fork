@@ -320,7 +320,7 @@ const handleFreshnessChange = (ingredient, value) => {
         reader.onload = () => resolve(reader.result.split(',')[1]);
         reader.readAsDataURL(file);
       });
-      const response = await axios.post('http://localhost:5001/api/recipes/detect-ingredients', {
+      const response = await axios.post('https://fridge-to-fork-1.onrender.com/api/recipes/detect-ingredients', {
         image: base64, mimeType: file.type
       });
       setIngredients(prev => [...new Set([...prev, ...response.data.ingredients])]);
@@ -335,7 +335,7 @@ const handleFreshnessChange = (ingredient, value) => {
     setError(''); setLoading(true); setRecipes([]); setSelectedRecipe(null);
     setShoppingList(null); setCheckedItems({}); setSelectedForShopping([]);
     try {
-      const response = await axios.post('http://localhost:5001/api/recipes/generate', {
+      const response = await axios.post('https://fridge-to-fork-1.onrender.com/api/recipes/generate', {
         ingredients,
 freshness: freshnessMap,
         dietaryPreference: dietary,
@@ -391,7 +391,7 @@ freshness: freshnessMap,
     setShoppingList(null);
     setCheckedItems({});
     try {
-      const response = await axios.post('http://localhost:5001/api/recipes/shopping-list', {
+      const response = await axios.post('https://fridge-to-fork-1.onrender.com/api/recipes/shopping-list', {
         recipes: selectedForShopping, language
       });
       setShoppingList(response.data.shoppingList);
@@ -445,7 +445,7 @@ freshness: freshnessMap,
     setChatInput('');
     setChatLoading(true);
     try {
-      const response = await axios.post('http://localhost:5001/api/recipes/chat', {
+      const response = await axios.post('https://fridge-to-fork-1.onrender.com/api/recipes/chat', {
         message: userMsg, language,
         selectedRecipe: selectedRecipe ? JSON.stringify({
           name: selectedRecipe.name,

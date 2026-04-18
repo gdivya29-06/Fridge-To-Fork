@@ -1,9 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const dotenv = require('dotenv');
 const recipeRoutes = require('./routes/recipes');
-
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -16,7 +13,7 @@ app.use('/api/recipes', recipeRoutes);
 app.get('/', (req, res) => {
   res.send('Recipe Generator AI Backend is running!');
 });
-
+console.log("OPENAI KEY EXISTS:", !!process.env.OPENAI_API_KEY);
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
