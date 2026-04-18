@@ -27,6 +27,25 @@ async function callAI(messages, retries = 3) {
     }
   }
 }
+/* ===================== YOUTUBE ===================== */
+async function getYouTubeVideo(query) {
+  try {
+    if (!YOUTUBE_API_KEY) return null;
+
+    const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&key=${YOUTUBE_API_KEY}&maxResults=1&type=video`;
+
+    const res = await axios.get(url);
+
+    if (!res.data.items || res.data.items.length === 0) return null;
+
+    const videoId = res.data.items[0].id.videoId;
+    return `https://www.youtube.com/watch?v=${videoId}`;
+
+  } catch (err) {
+    console.error("YouTube error:", err.message);
+    return null; // 🔥 NEVER crash
+  }
+}
 async function getFoodImageFromUnsplash(recipeName) {
   try {
     const UNSPLASH_KEY = process.env.UNSPLASH_ACCESS_KEY;
@@ -280,7 +299,7 @@ Return ONLY a valid JSON array with exactly this structure, no extra text, no ma
   recipes.map(async (recipe, index) => {
     const unsplashImage = await getFoodImageFromUnsplash(recipe.name);
     const imageUrl = unsplashImage || getFoodImage(recipe.name, index);
-    const youtubeUrl = null;
+    const youtubeUrl = await getYouTubeVideo(recipe.name + " recipe");
     console.log(`${recipe.name} → Image: ${imageUrl ? 'Unsplash ✅' : 'Fallback'} | YouTube: ${youtubeUrl ? '✅' : 'null'}`);
     return { ...recipe, imageUrl, youtubeUrl };
   })
@@ -431,7 +450,7 @@ Return ONLY a valid JSON array with exactly this structure, no markdown:
       recipes.map(async (recipe, index) => {
         const unsplashImage = await getFoodImageFromUnsplash(recipe.name + ' dessert');
         const imageUrl = unsplashImage || getFoodImage(recipe.name, index);
-        const youtubeUrl = null;
+        const youtubeUrl = await getYouTubeVideo(recipe.name + " recipe");
         return { ...recipe, imageUrl, youtubeUrl };
       })
     );
